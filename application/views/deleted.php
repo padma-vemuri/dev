@@ -1,4 +1,3 @@
-
 <table  class="curvedEdges" style = "position:absolute; top:260px;table-layout:fixed; "  >
   <tr style="background-color:lightblue;white-space:nowrap;text-align:left;">
     
@@ -13,6 +12,7 @@
     <th>Supported DB </th>
     <th>Analyst</th>
     <th>Status</th>
+    <th>Last Updated By (PST)</th>
     <th>Release Related</th>    
     <th>Summary</th>
     <th>Recommendations</th>
@@ -25,12 +25,7 @@ error_reporting(0);
 $view ='VI';
 foreach($query as $row){
 
-    $search = preg_replace('/\(|\)/','',$row->CaseNo);
-    $search = preg_replace('/\ |\ /','',$search);
-     
-     $pattern = '/PAGED/';
-     $replacement = '';
-   $incnumber = preg_replace($pattern,$replacement ,$search); 
+    
   echo "<tr class =\"hover\" style=\"border:0px;\">";
 
     //echo "<td> <a id='link' href=''>Edit</a></td>"
@@ -38,7 +33,7 @@ foreach($query as $row){
     echo "<td style='width:60px;'>". $row->IssueReportedDate ."</td>";
  	//echo "<td>". $row->CaseNo ."</td>";  
 
- 	echo  "<td  >"."<a href='' style=\"color:blue;\" onclick =\"javascript: window.open('view/".$incnumber."', 'window_name', 'width = 250, height = 250,scrollbars=yes');\">Audit</a>".anchor('home/create/'.$incnumber, $row->CaseNo,array('id'=>'edit'))."</td>"; 
+ 	echo  "<td  >"."<a href='' style=\"color:blue;\" onclick =\"javascript: window.open('view/".$incnumber."', 'window_name', 'width = 250, height = 250,scrollbars=yes');\">Audit</a>".$row->CaseNo."</td>"; 
   echo "<td style='word-wrap:break-word;'>". $row->GBP ."</td>";
   echo "<td style='word-wrap:break-word;'>". $row->Project ."</td>";
   echo "<td style='word-wrap:break-word;'>". $row->Application ."</td>";
@@ -48,6 +43,7 @@ foreach($query as $row){
  	echo "<td  style='text-align:center;'>". $row->SupportedDB ."</td>";
  	echo "<td >". $row->Analyst ."</td>";
  	echo "<td >". $row->Status."</td>";
+  echo "<td >". $row->LastUpdatedDate."</td>";
  	echo "<td  style='text-align:center;'>". $row->ReleaseRelated ."</td>";  
  	echo "<td style='word-wrap:break-word;' >".$row->Summary."</td>"; 
   echo "<td style='word-wrap:break-word;' >".  $row->Recommendations."</td>";

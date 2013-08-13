@@ -291,7 +291,34 @@ class User_model extends CI_Model{
 
 	}
 
+	function deletedIssues(){
+		$query = $this->db->query("SELECT distinct(rev.ID), 
 
+                            '<div style=\"width:60px;\">'||rev.ISSUE_REPORTED_DATE||'</div>' as \"IssueReportedDate\",
+                            rev.CASE_NO as \"CaseNo\",
+                            '<div   style=\"width:60px;\">'||rev.gbp||'</div>' as \"GBP\",
+                           to_char(last_update_date,'mm/dd/yyyy hh:mi:ss AM')  as \"LastUpdatedDate\",
+                            
+                            '<div style=\"width:180px; word-break:hyphenate;\">'||rev.APPLICATION||'</div>' as  \"Application\",
+                            '<div style=\"width:180px;white-space:pre-line; word-break:keep-all;\">'||rev.PRIORITY||'</div>' as \"Priority\",
+                            rev.DB_FE as \"DBFE\",
+                            '<div style=\"width:100px;white-space:pre-line; word-break:keep-all;\">'||rev.DB||'</div>' as \"Database\",
+                            rev.SUPPORTED_DB as \"SupportedDB\",
+                            rev.ANALYST as \"Analyst\",
+                            rev.STATUS as \"Status\",
+                            rev.RELEASE_RELATED as \"ReleaseRelated\",
+                            '<div style=\"width:235px; word-break:hyphenate;white-space:pre-line;\">'||rev.SUMMARY||'</div>'  as \"Summary\",
+                            '<div style=\"width:235px;white-space:pre-line; word-break:hyphenate;\">'||rev.RECOMMENDATIONS||'</div>' as \"Recommendations\",rev.CASE_PBI as \"CasePBI\"
+                              from gdcp.RELEASE_STATUS_REPORT_REV rev  where rev.ID not in ( select a.Id from gdcp.release_status_report_v a  join  gdcp.RELEASE_STATUS_REPORT_REV v on  a.id = v.id) order by  to_char(last_update_date,'mm/dd/yyyy hh:mi:ss AM') desc "
+							);
+		if($query){
+			return $query->result();
+		}else{
+			return false;
+		}
+
+
+	}
 
 
 

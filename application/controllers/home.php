@@ -746,6 +746,18 @@
 
           }
 
+          function deletedIssues(){
+               error_reporting(0);
+               if(!isset($this->session->userdata['username']))
+                    redirect('login');
+               $this->load->view('header');
+               $this->load->view('menu');
+               $this->load->view('search');
+               $this->load->model('user_model');
+               $data['query'] = $this->user_model->deletedIssues();
+               $this->load->view('deleted',$data);
+          }
+
           function emailsupport(){
 
                 if(!isset($this->session->userdata['username']))

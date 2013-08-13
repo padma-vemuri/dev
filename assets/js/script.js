@@ -34,7 +34,8 @@ $(function(){
 
 
 $(function() {
-	$( "#reporteddate" ).datepicker();
+	$( "#reporteddate" ).datepicker({ minDate: -365, maxDate: 0});
+	$( "#reporteddate" ).datepicker("option", "showAnim", "slideDown");
 	
 });
 
