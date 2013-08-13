@@ -1,0 +1,168 @@
+
+body{ background-color: white; line-height: 1em;  }
+ #contents { width: 100% }
+ #wrapper{ width: 1200px; float:left; margin: 0 auto; }
+
+ label{ width: 110px;font-family: Arial;font-size: 12px; float:left;display:inline-block;color:black; padding-top: 5px;}
+ label.signin{ width: 100px;float:left;;font:  14px/18px 'OpenSansLight', Arial, sans-serif;letter-spacing: 1;
+               display:inline-block;color:white; padding-top: 5px;}
+#fromdiv{position: relative;}
+
+#form{ -webkit-border-radius: 5px; -moz-border-radius: 5px;width: auto; 
+      border-radius: 5px;font: 15px/30px 'OpenSansLight', Arial, sans-serif;line-height: 1.3em;
+      padding : 30px 40px 40px 30px;background-color:rgba(65,105,225,.56);
+      color: whitesmoke; clear:both; float: right; position: absolute; top:90px; }
+#emailform{ -webkit-border-radius: 5px; -moz-border-radius: 5px;width: auto; 
+      border-radius: 5px;font: 15px/30px 'OpenSansLight', Arial, sans-serif;line-height: 1.3em;
+      padding : 30px 40px 40px 30px;width:350px;background-color:rgba(65,105,225,.56);
+      color: whitesmoke; clear:both; float: right; position: absolute; top:50px; }
+
+button.btn { margin-right: 20px; text-align: left;font:  14px/18px 'OpenSansLight', Arial, sans-serif;letter-spacing: 0; margin-right:2px;  border:solid 1px #ccc; padding:5px 10px;  margin:0 0 20px; color:#333;cursor:pointer;}
+ul{display:inline-block;list-style-type: none;margin: 0px,-10px,0,0;}
+li{text-decoration:none;list-style-type: none;text-align: center;margin-left: -30px;padding-right: 10px;padding-top: 3px;padding-bottom: 3px;}
+#button,#button1,#buttton { float:right;margin-right: 20px; text-align: left;font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0; margin-right:2px;  border:solid 1px #ccc; padding:5px 10px;  margin:0 0 20px; color:#333;cursor:pointer;}
+#button:hover{
+	background-color:rgba(65,105,225,0.8);
+	color: white;
+}
+#button1:hover{
+	background-color:rgba(65,105,225,0.8);
+	color: white;
+}
+button#update {  margin-right: 20px; text-align: left;font:  14px/18px 'OpenSansLight', Arial, sans-serif;letter-spacing: 0; margin-right:2px;  border:solid 1px #ccc; padding:5px 10px;  margin:0 0 20px; text-transform:uppercase;color:#333;cursor:pointer;}
+
+pre{font:  12px/12px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0;}
+pre#td{ font-family: calibri; font-size: 12px; line-height: 13px;word-break:break-word;
+
+}
+div.ui-datepicker{
+ font-size:11px;
+ background: rgba(175,238,238,1);
+}
+
+/*#form {
+   -moz-box-shadow: inset 0 0 30px 3px rgba(69, 113, 218,0.5);
+   -webkit-box-shadow: inset 0 0 30px 3px rgba(69, 113, 218,0.5);
+   box-shadow: 0 0 30px 3px rgba(69, 113, 218,0.5);
+}*/
+#userid{ -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;font:  15px/18px 'OpenSansLight', Arial, sans-serif;letter-spacing: 0; padding:5px;  color:black; border:solid 1px #ccc; margin:0 0 20px; width:220px;}
+#password{ -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;font:  15px/18px 'OpenSansLight', Arial, sans-serif;letter-spacing: 0; padding:5px;  color:black; border:solid 1px #ccc; margin:0 0 20px; width:220px;}
+#conpassword{ -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;font:  15px/18px 'OpenSansLight', Arial, sans-serif;letter-spacing: 0; padding:5px;  color:black; border:solid 1px #ccc; margin:0 0 20px; width:220px;}
+#firstname {-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;font:  15px/18px 'OpenSansLight', Arial, sans-serif;letter-spacing: 0; padding:5px;  color:black; border:solid 1px #ccc; margin:0 0 20px; width:220px;}
+#lastname{ -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;font:  15px/18px 'OpenSansLight', Arial, sans-serif;letter-spacing: 0; padding:5px;  color:black; border:solid 1px #ccc; margin:0 0 20px; width:220px;}
+#ccid{ -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;font:  15px/18px 'OpenSansLight', Arial, sans-serif;letter-spacing: 0; padding:5px;  color:black; border:solid 1px #ccc; margin:0 0 20px; width:220px;}
+h1#reset{font:  20px/22px 'OpenSansLight', Arial, sans-serif;letter-spacing: 0;}
+h1{font:  30px/42px 'OpenSansLight', Arial, sans-serif;letter-spacing: 1;}
+h1.logo{font:  13px/12px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1px;color: transparent;
+         text-shadow: 0px 9px 2px rgba(255,255,255,1.3);}
+h2{font: 26px/38px 'OpenSansSemibold', Arial, sans-serif;letter-spacing: 0;}
+div.body {font:  18px/22px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0; position: absolute; top:90px;overflow: auto; }
+a{text-decoration: none; color:yellow; float:right; }
+fieldset {position:absolute;left:500px; top : 150px;border-radius: 10px;  font:  12px/16px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0;
+            -moz-box-shadow: inset 0 0 10px 3px rgba(69, 113, 218,0.2);
+            -webkit-box-shadow: inset 0 0 10px 3px rgba(69, 113, 218,0.2);
+                  box-shadow: 0 0 10px 3px rgba(69, 113, 218,0.2);}
+li.passwordReset {text-align: left; margin-left: 10px;}
+div#menu{ position:absolute;top:00px;right:10px; }
+
+div#leftpane{position: absolute; top: 150px;}
+div#casesummary{float: left;}
+div#cases24{position:absolute; top:10px;}
+div#open24{ float: left;clear: both;}
+
+div#footer{position: relative;margin-top: -100px;height: 150px;clear:both;}
+div#list{position:absolute; top:150px;}
+div#charts{position: absolute;top:300px;}
+div#new{position:absolute; top:170px;}
+div#email{position:absolute; top:180px;}
+
+div.logout{position: absolute;top:110px;right:30px; }
+div.subscript{position:absolute;top:135px;right:10px;font:  11px/11px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0; color:red;}
+div.js{position:absolute;top: 205px;right:10px;font:  11px/11px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0; color:red;}
+div#casesummarytitle{position:absolute; top:145px;}
+div#open24title{position:absolute; top:395px;}
+div#open24titleE{position:absolute; top:510px;border:solid 4px; padding: 15px 15px 15px 15px; border-color: royalblue;-webkit-border-radius:9px;-moz-border-radius:9px;-ms-border-radius:9px;-o-border-radius:9px;border-radius:9px;}
+div#cases24title{position:absolute; top:145px; left: 520px;}
+div#cases24titleE{position:absolute; top:195px; left: 700px; border:solid 4px; padding: 15px 15px 15px 15px; border-color: royalblue;-webkit-border-radius:9px;-moz-border-radius:9px;-ms-border-radius:9px;-o-border-radius:9px;border-radius:9px;}
+
+div.jqoutput{position:absolute;float:right;font:  11px/11px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0; color:red; }
+a.menu{text-decoration: none; color:black;width:100%; float:right;font:  13px/18px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0;}
+
+a.menu:hover{color:black;opacity: 2;}
+div#addform{font:  10px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0;position:absolute; top:00px;}
+
+a#link{text-decoration: none; color:black; float:right;font:  12px/18px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0; }
+a#link:hover{color:blue;}
+
+a#suppdb{text-decoration: none; padding-top:5px;color:black;position:absolute;float:right; }
+a#suppdb:hover{color:green;}
+
+
+h2.tableinside{font-size:14px; font-family:Arial; letter-spacing: 0;float:left;}
+h2.tableheading{font:  16px/27px 'OpenSansSemibold', Arial, sans-serif;letter-spacing:0;float: left;}
+
+button#logout {  float:left; text-align: right;font:  13px/13px 'OpenSansLight', Arial, sans-serif;letter-spacing: 1; margin-right:0px;  border:solid 1px #ccc; padding:5px 5px;  margin:0 0 0px; color:#333;cursor:pointer;}
+button#button {  float:left; text-align: right; margin-right:0px;position:absolute;  border:solid 1px #ccc; padding:5px 5px;  margin:0 0 0px; color:#333;cursor:pointer;}
+
+
+a#edit{text-decoration: none; color:black;width:100%; float:right;}
+a#edit:hover{color:green;}
+
+div#addform{position: absolute; top: 90px;}
+div#error{font:  14px/16px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0px;position: absolute;top:200px;}
+
+
+#createform{ -webkit-border-radius: 5px; -moz-border-radius: 5px;line-height: 1; border-radius: 5px;font-size:10px;font-family: Arial; padding : 30px 40px 0px 30px;background-color:rgba(65,105,225,0.1); ;color: black;clear:both; float: right; position: absolute; top:-80px; width:650px; }
+#createform {
+   -moz-box-shadow: inset 0 0 30px 3px rgba(69, 113, 218,0.5);
+   -webkit-box-shadow: inset 0 0 30px 3px rgba(69, 113, 218,0.5);
+   box-shadow: 0 0 30px 3px rgba(69, 113, 218,0.5);
+}
+p.errorlog {color:darkred;font-weight: normal;top:0px; font-size: 14px;}
+p.sucesslog{position:absolute; top:10px;font:  13px/13px 'OpenSansLight', Arial, sans-serif;letter-spacing: 0;background-color: rgba(65,105,225,0.1); color:black; padding: 7px 5px 5px 7px; border-radius: 3px;}
+div#welcome{position:absolute;top: 115px; right:99px; color:black;font: 12px/12px 'OpenSansRegular', Arial, sans-serif;padding:0px 0px 0px 0px;}
+div#welcome:hover{color:green;}
+input, select{ -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;letter-spacing: 0.4px; padding:1px;  color:black; border:solid 1px #ccc; margin:0 0 0px;}
+select.search,input.search { -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;font:  13px/13px 'OpenSansLight', Arial, sans-serif;letter-spacing: 0.4px; padding:3px;  color:black; border:solid 1px #ccc; margin:0 0 0px; width: 180px;}
+
+.menuicon:hover{background-color:rgba(65,105,225,0.3);transition:1200ms;border-radius: 7px;}
+.menuicon{padding-top: 1px;}
+
+input.search:focus{background-color:rgba(65,105,225,0.1);}
+
+input#button1{position:absolute; top: 180px;}
+
+div#search{font:  16px/13px 'OpenSansLight', Arial, sans-serif;letter-spacing: 0;}
+
+div#emailsform{position: absolute; top:100px;}
+
+p.count{
+   position: relative;
+   top:20px;
+}
+table.countIssues{
+   border-collapse: collapse;
+   border: 1px solid lightblue;
+   position: absolute;
+   top:180px;
+   right:10px;
+
+}
+
+th#theader{background-color:rgba(65,105,255,.27); color:black; padding: 2px 2px 2px 2px;font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1;}
+th#theaderH{background-color:rgba(65,105,255,.27); color:black;border-right: 1px solid white; border-bottom: 1px solid white; padding: 2px 2px 2px 2px;font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1;}
+th#theader2Y{background-color:rgba(0,100,0,.77); color:white;padding: 2px 2px 2px 2px; border-bottom: 1px solid; font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1;}
+th#theader2N{background-color:rgba(255,0,0,.67); color:white;padding: 2px 2px 2px 2px; border-bottom: 1px solid; font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1;}
+
+td.tdataY {background-color:rgba(0,100,0,.77);color:white;border-right: 1px solid; padding: 3px 3px 3px 3px;font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1;}
+td.tdataN {background-color:rgba(255,0,0,.67);color:white;border-left: 1px solid; padding: 3px 3px 3px 3px;font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1;}
+.charts{position: absolute; top: 150px;}
+#incidentSummary{width: 400px; height: 100px;margin:10px 10px 10px 20px;}
+#incidentLoggedByDate{width: 400px; height: 300px;margin:10px 10px 10px 20px;}
+#incidentOpenByProject{width: 500px; height: 300px;margin:10px 10px 10px 20px;}
+#incidentLoggedByProjects{width: 600px; height: 300px;margin:10px 10px 10px 20px;}
+#closedCasesByProject{width: 600px; height: 300px;margin:10px 10px 10px 20px;}
+
+div.left{display: inline-block;float: left;}
+div.right{display: inline-block;float: left;}
+
