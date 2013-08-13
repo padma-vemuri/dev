@@ -86,7 +86,7 @@
                echo"<div id ='leftpane'>";
 			$this->table->set_template($tmpl);
                $this->table->set_empty("0");
-               $this->table->set_caption('Q1FY14-Issues Summary');
+               $this->table->set_caption('<p id="indextableheading">Q1FY14 -Issues Summary</p>');
                if($query->num_rows() > 0)
 			  echo $this->table->generate($query);
                else
@@ -98,7 +98,7 @@
                     echo "<div style=\"width:auto;\" id = \"open24title\"></div>";
                     $this->table->set_template($tmp2);
                     $this->table->set_empty("Not Defined");
-                    $this->table->set_caption('Q1FY14-Issues open in the last 24 hours');
+                    $this->table->set_caption('<p id="indextableheading">Q1FY14 -Issues open in the last 24 hours</p>');
                     echo $this->table->generate($query);
                }
                else{
@@ -115,7 +115,7 @@
                     $query = $this->user_model->cases24();
 	         		$this->table->set_template($tmp3);
                     $this->table->set_empty("Not Defined");
-                    $this->table->set_caption('Q1FY14-Issues worked on last 24 Hours');
+                    $this->table->set_caption('<p id="indextableheading">Q1FY14 -Issues worked on last 24 Hours</p>');
                     //echo $this->curPageURL();
                     echo $this->table->generate($query);
                }
@@ -141,14 +141,18 @@
                $this->session->unset_userdata('errorlog');
                $this->load->model('user_model');
                $data['query'] = $this->user_model->update();
-               $data['openCount'] = $this->user_model->openCountR();
-               $data['closedCount'] = $this->user_model->closedCountR();
-               $data['openCountNotRelated'] = $this->user_model->openCountNR();
-               $data['closedCountNotRelated'] = $this->user_model->closedCountNR();
-               
-               //$data['othersCount'] = $this->user_model->othersCount();
-               $this->load->library('table');
+               $data['countOpenPBIY']= $this->user_model->countPBI('Y','Open');
+               $data['countOpenINCY']= $this->user_model->countINC('Y','Open');
+               $data['countOpenPBIN']= $this->user_model->countPBI('N','Open');
+               $data['countOpenINCN']= $this->user_model->countINC('N','Open');
+               $data['countClosedPBIY']= $this->user_model->countPBI('Y','Closed');
+               $data['countClosedINCY']= $this->user_model->countINC('Y','Closed');
+              $data['countClosedPBIN']= $this->user_model->countPBI('N','Closed');
+               $data['countClosedINCN']= $this->user_model->countINC('N','Closed');
+               $this->load->view('tablesummary',$data);
                $this->load->view('update',$data);
+
+
           }
           function create($id = ''){
                if(!isset($this->session->userdata['username']))
@@ -615,10 +619,18 @@
                //$this->load->view('search');
                $this->load->model('user_model');
                $query =  $this->user_model->search();
-               $data['openCount'] = $this->user_model->CountopenRelated();
+               /*$data['openCount'] = $this->user_model->CountopenRelated();
                $data['closedCount'] = $this->user_model->CountclosedRelated();
                $data['openCountNotRelated'] = $this->user_model->CountopenNotRelated();
-               $data['closedCountNotRelated'] = $this->user_model->CountclosedNotRelated();
+               $data['closedCountNotRelated'] = $this->user_model->CountclosedNotRelated();*/
+               $data['countOpenPBIY']= $this->user_model->CountSearchPBI('Y','Open');
+               $data['countOpenINCY']= $this->user_model->CountSearchINC('Y','Open');
+               $data['countOpenPBIN']= $this->user_model->CountSearchPBI('N','Open');
+               $data['countOpenINCN']= $this->user_model->CountSearchINC('N','Open');
+               $data['countClosedPBIY']= $this->user_model->CountSearchPBI('Y','Closed');
+               $data['countClosedINCY']= $this->user_model->CountSearchINC('Y','Closed');
+               $data['countClosedPBIN']= $this->user_model->CountSearchPBI('N','Closed');
+               $data['countClosedINCN']= $this->user_model->CountSearchINC('N','Closed');
                $this->load->library('table');
                $tmpl = array (
                     'table_open'          => '<div id="issues" style ="z-index:1; position:relative; top:200px;"><table style = "" class="curvedEdges">',
@@ -644,6 +656,7 @@
                $this->table->set_template($tmpl);
                $data['query'] = $query;
                if($query != false){
+                     $this->load->view('tablesummary',$data);
                      $this->load->view('update',$data);
 
 

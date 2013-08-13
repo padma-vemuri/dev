@@ -243,75 +243,24 @@ class User_model extends CI_Model{
 
 
 
-
-	function openCountR(){
-		$query =$this->db->query(" select count(Case_no) as \"OPEN\" from gdcp.release_status_report_V where Status not in ('Closed','Resolved')  and release_related = 'Y' ");
-		if($query){
-			return $query->result();
-		}else
-		return false;
-	}
-	function closedCountR(){
-		$query =$this->db->query(" select count(Case_no) as \"CLOSED\" from gdcp.release_status_report_V where Status in ('Closed','Resolved') and release_related = 'Y' ");
-		if($query){
-			return $query->result();
-		}else
-		return false;
-	}
-
-
-	function openCountNR(){
-		$query =$this->db->query(" select count(Case_no) as \"OPEN\" from gdcp.release_status_report_V where Status not in ('Closed','Resolved')  and release_related = 'N' ");
-		if($query){
-			return $query->result();
-		}else
-		return false;
-	}
-	function closedCountNR(){
-		$query =$this->db->query(" select count(Case_no) as \"CLOSED\" from gdcp.release_status_report_V where Status in ('Closed','Resolved') and release_related = 'N' ");
-		if($query){
-			return $query->result();
-		}else
-		return false;
-	}
 	
 
-	function CountopenRelated(){
+	function CountSearchPBI($rr,$status){
 
 		$searchString = remove_characters($this->input->get('search'));
 		$list  = $this->input->get('list');
-		$collumns =  'count (status) as "OPEN" from  gdcp.RELEASE_STATUS_REPORT_V where';
+		if($status == 'Closed'){
+			$collumns =  'count (case_no) as "CLOSED" from  gdcp.RELEASE_STATUS_REPORT_V where ';
+			$query = $this->db->query("SELECT ".$collumns."  Status in ('Closed','Resolved') and  ".$list." = '".$searchString."' and release_related = '".$rr."' and case_pbi = 'P' order by ".$list );
+		}
+		elseif($status == 'Open'){
+			$collumns =  'count (case_no) as "OPEN" from  gdcp.RELEASE_STATUS_REPORT_V where';
+			$query = $this->db->query("SELECT ".$collumns." Status not in ('Closed','Resolved') and ".$list." = '".$searchString."' and release_related = '".$rr."' and case_pbi = 'P' order by ".$list );
+		}
 
 			
-		$query = $this->db->query("SELECT ".$collumns." Status <> 'Closed' and Status <>'Resolved'  and ".$list." = '".$searchString."' and release_related = 'Y'  order by ".$list );
-		if($query){
-			return $query->result();
-		}else
-		return false;
-
-	}
-	function CountclosedRelated(){
-
-		$searchString = remove_characters($this->input->get('search'));
-		$list  = $this->input->get('list');
-		$collumns =  'count (status) as "CLOSED" from  gdcp.RELEASE_STATUS_REPORT_V where ';
-			
-		$query = $this->db->query("SELECT ".$collumns."  status in ('Closed','Resolved')  and ".$list." = '".$searchString."' and release_related = 'Y'  order by ".$list );
-		if($query){
-			return $query->result();
-		}else
-		return false;
-
-	}
-
-	function CountopenNotRelated(){
-
-		$searchString = remove_characters($this->input->get('search'));
-		$list  = $this->input->get('list');
-		$collumns =  'count (status) as "OPEN" from  gdcp.RELEASE_STATUS_REPORT_V where';
-
-			
-		$query = $this->db->query("SELECT ".$collumns." Status <> 'Closed' and Status <>'Resolved'  and ".$list." = '".$searchString."' and release_related = 'N'  order by ".$list );
+		
+		
 		if($query){
 			return $query->result();
 		}else
@@ -319,19 +268,30 @@ class User_model extends CI_Model{
 
 	}
 
-	function CountclosedNotRelated(){
+	function CountSearchINC($rr,$status){
 
 		$searchString = remove_characters($this->input->get('search'));
 		$list  = $this->input->get('list');
-		$collumns =  'count (status) as "CLOSED" from  gdcp.RELEASE_STATUS_REPORT_V where ';
+		if($status == 'Closed'){
+			$collumns =  'count (case_no) as "CLOSED" from  gdcp.RELEASE_STATUS_REPORT_V where ';
+			$query = $this->db->query("SELECT ".$collumns."  Status in ('Closed','Resolved') and ".$list." = '".$searchString."' and release_related = '".$rr."' and case_pbi = 'C' order by ".$list );
+		}
+		elseif($status == 'Open'){
+			$collumns =  'count (case_no) as "OPEN" from  gdcp.RELEASE_STATUS_REPORT_V where';
+			$query = $this->db->query("SELECT ".$collumns." Status not in ('Closed','Resolved') and ".$list." = '".$searchString."' and release_related = '".$rr."' and case_pbi = 'C' order by ".$list );
+		}
+
 			
-		$query = $this->db->query("SELECT ".$collumns."  status in ('Closed','Resolved')  and ".$list." = '".$searchString."' and release_related = 'N'   order by ".$list );
+		
+		
 		if($query){
 			return $query->result();
 		}else
 		return false;
 
 	}
+
+
 
 
 

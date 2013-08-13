@@ -1,7 +1,6 @@
 <?php
-error_reporting(0);
 
-echo "<table class ='countIssues'> <tr><th id= 'theader' colspan = '4'> Release Related </th></tr>";
+/*echo "<table class ='countIssues'> <tr><th id= 'theader' colspan = '4'> Release Related </th></tr>";
 echo " <tr><th  id= 'theader2Y' colspan = '2'>Yes</th><th  id= 'theader2N' colspan = '2'>No</th> </tr>";
 echo "<tr><td class ='tdataY'>";
 foreach ($openCount as $row) {
@@ -18,7 +17,7 @@ foreach ($closedCountNotRelated as $row)
   echo "<td class ='tdataN'>Closed: ".$row->CLOSED."</td>";
 
 echo "</tr> </table>"
-
+*/
 ?>
 <table  class="curvedEdges" style = "position:absolute; top:260px;table-layout:fixed; "  >
   <tr style="background-color:lightblue;white-space:nowrap;text-align:left;">
