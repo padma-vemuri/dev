@@ -6,15 +6,25 @@
 	     function index(){
                if(!isset($this->session->userdata['username']))
                     redirect('login');
+               $this->session->set_userdata('previousPage',CurrentPage::curPageURL());
                echo $this->session->userdata('sucesslog');
                echo $this->session->userdata('errorlog');
                $this->session->unset_userdata('sucesslog');
                $this->session->unset_userdata('errorlog');
-
+               $this->load->model('user_model');
+               
                $this->load->view('header');
 			$this->load->view('menu');
                $this->load->view('search');
-			$this->load->model('user_model');
+               $data['countOpenPBIY']= $this->user_model->countPBI('Y','Open');
+               $data['countOpenINCY']= $this->user_model->countINC('Y','Open');
+               $data['countOpenPBIN']= $this->user_model->countPBI('N','Open');
+               $data['countOpenINCN']= $this->user_model->countINC('N','Open');
+               $data['countClosedPBIY']= $this->user_model->countPBI('Y','Closed');
+               $data['countClosedINCY']= $this->user_model->countINC('Y','Closed');
+               $data['countClosedPBIN']= $this->user_model->countPBI('N','Closed');
+               $data['countClosedINCN']= $this->user_model->countINC('N','Closed');
+               $this->load->view('tablesummaryindex',$data);
 			$query = $this->user_model->casesummary();
 			$this->load->library('table');
 			
@@ -131,6 +141,7 @@
                error_reporting(0);
                if(!isset($this->session->userdata['username']))
                     redirect('login');
+               $this->session->set_userdata('previousPage',CurrentPage::curPageURL());
                $this->load->view('header');
                $this->load->view('menu');
                $this->load->view('search');
@@ -147,7 +158,7 @@
                $data['countOpenINCN']= $this->user_model->countINC('N','Open');
                $data['countClosedPBIY']= $this->user_model->countPBI('Y','Closed');
                $data['countClosedINCY']= $this->user_model->countINC('Y','Closed');
-              $data['countClosedPBIN']= $this->user_model->countPBI('N','Closed');
+               $data['countClosedPBIN']= $this->user_model->countPBI('N','Closed');
                $data['countClosedINCN']= $this->user_model->countINC('N','Closed');
                $this->load->view('tablesummary',$data);
                $this->load->view('update',$data);
@@ -290,6 +301,7 @@
                $this->load->view('search');
 			$this->load->model('user_model');
 			$query = $this->user_model->projectlist();
+               $this->session->set_userdata('previousPage',CurrentPage::curPageURL());
 			$this->load->library('table');
 			$tmpl = array (
                     'table_open'          => '<div id="list"><table class="curvedEdges" >',
@@ -340,7 +352,7 @@
                $add = $this->user_model->add();
                if($add){
                      $this->session->set_userdata('sucesslog','<p class="sucesslog">'.$add.'</p>');
-                     redirect('home/update');
+                     redirect($this->session->userdata('previousPage'));
                 }
                else{
                     $this->session->set_userdata('errorlog','<p class="errorlog">Case Id was already used. or Unable to Create.</p>'.$mes);
@@ -619,10 +631,11 @@
                //$this->load->view('search');
                $this->load->model('user_model');
                $query =  $this->user_model->search();
-               /*$data['openCount'] = $this->user_model->CountopenRelated();
-               $data['closedCount'] = $this->user_model->CountclosedRelated();
-               $data['openCountNotRelated'] = $this->user_model->CountopenNotRelated();
-               $data['closedCountNotRelated'] = $this->user_model->CountclosedNotRelated();*/
+               $this->session->set_userdata('previousPage',CurrentPage::curPageURL());
+               echo $this->session->userdata('sucesslog');
+               echo $this->session->userdata('errorlog');
+               $this->session->unset_userdata('sucesslog');
+               $this->session->unset_userdata('errorlog');
                $data['countOpenPBIY']= $this->user_model->CountSearchPBI('Y','Open');
                $data['countOpenINCY']= $this->user_model->CountSearchINC('Y','Open');
                $data['countOpenPBIN']= $this->user_model->CountSearchPBI('N','Open');

@@ -1,3 +1,12 @@
+function goback(){
+	if(document.referrer.search('create') != -1)
+		window.history.go(-1);
+	else if(document.referrer.search('create') > -1)
+		window.history.go(-3);
+}
+
+
+
 $(function(){
 	$('#userid').bind('input propertychange',function(){
 		if($(this).val().length > 13)
@@ -38,6 +47,5 @@ $(function() {
 	$( "#reporteddate" ).datepicker("option", "showAnim", "slideDown");
 	
 });
-
 
 

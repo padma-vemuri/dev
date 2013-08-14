@@ -140,12 +140,23 @@ p.count{
    position: relative;
    top:20px;
 }
+
+
 table.countIssues{
    border-collapse: collapse;
    border: 1px solid lightblue;
    position: absolute;
    top:180px;
    right:10px;
+
+}
+
+table.countIssuesindex{
+   border-collapse: collapse;
+   border: 1px solid lightblue;
+   position: absolute;
+   top:10px;
+   left:1px;
 
 }
 
@@ -165,4 +176,6 @@ td.tdataN {background-color:rgba(255,0,0,.67);color:white;border-left: 1px solid
 
 div.left{display: inline-block;float: left;}
 div.right{display: inline-block;float: left;}
+
+
 

@@ -247,7 +247,7 @@ class User_model extends CI_Model{
 
 	function CountSearchPBI($rr,$status){
 
-		$searchString = remove_characters($this->input->get('search'));
+		$searchString = $this->remove_characters($this->input->get('search'));
 		$list  = $this->input->get('list');
 		if($status == 'Closed'){
 			$collumns =  'count (case_no) as "CLOSED" from  gdcp.RELEASE_STATUS_REPORT_V where ';
@@ -270,7 +270,7 @@ class User_model extends CI_Model{
 
 	function CountSearchINC($rr,$status){
 
-		$searchString = remove_characters($this->input->get('search'));
+		$searchString = $this->remove_characters($this->input->get('search'));
 		$list  = $this->input->get('list');
 		if($status == 'Closed'){
 			$collumns =  'count (case_no) as "CLOSED" from  gdcp.RELEASE_STATUS_REPORT_V where ';
@@ -489,13 +489,15 @@ class User_model extends CI_Model{
 			return false;
 
 	}
-	function search(){
-		function remove_characters($str){
+
+	function remove_characters($str){
 			$find =    array("+","*","%","/");
 			$replace = array("%","%","%","/");
 			return    str_replace($find, $replace, $str);
-		}
-		$searchString = remove_characters($this->input->get('search'));
+	}
+	function search(){
+		
+		$searchString = $this->remove_characters($this->input->get('search'));
 		$list  = $this->input->get('list');
 		
 		$collumns =  'ID,

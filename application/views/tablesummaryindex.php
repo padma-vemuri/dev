@@ -1,7 +1,7 @@
 <?php
 error_reporting(0);
 
-echo "<table class ='countIssues'> 
+echo "<table class ='countIssuesindex'> 
 			<tr><th id= 'theaderH'  colspan = '4'> Cases </th>
 				<th id= 'theaderH'  colspan = '4'> PBI</th></tr>
 			
