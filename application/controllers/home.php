@@ -352,7 +352,7 @@
                $add = $this->user_model->add();
                if($add){
                      $this->session->set_userdata('sucesslog','<p class="sucesslog">'.$add.'</p>');
-                     redirect($this->session->userdata('previousPage'));
+                     ?><script type="text/javascript">window.history.go(-2);</script><?php
                 }
                else{
                     $this->session->set_userdata('errorlog','<p class="errorlog">Case Id was already used. or Unable to Create.</p>'.$mes);
