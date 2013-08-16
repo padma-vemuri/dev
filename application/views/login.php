@@ -22,7 +22,7 @@
 				'id'   =>'userid',
 				'class' =>'signin',
 				'Required' =>'Required',
-				'placeholder'=>'ccid',
+				'placeholder'=>'cecid',
 				'maxlength' => '18',
 				'size' => '24'
 				);

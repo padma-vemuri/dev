@@ -96,7 +96,7 @@
                echo"<div id ='leftpane'>";
 			$this->table->set_template($tmpl);
                $this->table->set_empty("0");
-               $this->table->set_caption('<p id="indextableheading">Q1FY14 -Issues Summary</p>');
+               $this->table->set_caption('<p id="indextableheading">Q2FY14 -Issues Summary</p>');
                if($query->num_rows() > 0)
 			  echo $this->table->generate($query);
                else
@@ -108,7 +108,7 @@
                     echo "<div style=\"width:auto;\" id = \"open24title\"></div>";
                     $this->table->set_template($tmp2);
                     $this->table->set_empty("Not Defined");
-                    $this->table->set_caption('<p id="indextableheading">Q1FY14 -Issues open in the last 24 hours</p>');
+                    $this->table->set_caption('<p id="indextableheading">Q2FY14 -Issues opened in last 24 hours</p>');
                     echo $this->table->generate($query);
                }
                else{
@@ -116,7 +116,7 @@
                     //$this->table->set_template($tmp2);
                     //$this->table->set_caption('Cases open in the last 24 hours');
                     //echo $this->table->generate($query); 
-                    echo "<h2 class=\"tableinside\"> No Issues were open in the last 24 hours</h2>";
+                    echo "<h2 class=\"tableinside\"> No Issues were opened in last 24 hours</h2>";
                }
                echo "</div>";
 
@@ -125,7 +125,7 @@
                     $query = $this->user_model->cases24();
 	         		$this->table->set_template($tmp3);
                     $this->table->set_empty("Not Defined");
-                    $this->table->set_caption('<p id="indextableheading">Q1FY14 -Issues worked on last 24 Hours</p>');
+                    $this->table->set_caption('<p id="indextableheading">Q2FY14 -Issues worked on in last 24 Hours</p>');
                     //echo $this->curPageURL();
                     echo $this->table->generate($query);
                }
@@ -238,13 +238,13 @@
 			$this->load->view('header');
 			$this->load->view('menu');
                $this->load->view('search');
-
+               $this->load->library('table');
 			//$this->load->view('email');
                echo $this->session->userdata('sucesslog');
                $this->session->unset_userdata('sucesslog');
 			$this->load->model('user_model');  
 			$query = $this->user_model->statusreport();
-			$this->load->library('table');
+			
 			$tmpl = array (
                     'table_open'          => '<div id="issues" style ="z-index:1; position:relative; top:200px;"><table style = "table-layout:fixed;" class="curvedEdges">',
 
@@ -352,7 +352,7 @@
                $add = $this->user_model->add();
                if($add){
                      $this->session->set_userdata('sucesslog','<p class="sucesslog">'.$add.'</p>');
-                     ?><script type="text/javascript">window.history.go(-2);</script><?php
+                     redirect($this->session->userdata('previousPage'));
                 }
                else{
                     $this->session->set_userdata('errorlog','<p class="errorlog">Case Id was already used. or Unable to Create.</p>'.$mes);
@@ -818,6 +818,9 @@
 
      }
      class CurrentPage {
+
+     
+
          public  function curPageURL() {
                $pageURL = 'http';
                //    if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
@@ -827,8 +830,11 @@
                } else {
                $pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
                }
+
                return $pageURL;
+
           }
+
      }
       
 
