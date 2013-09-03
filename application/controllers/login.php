@@ -134,7 +134,7 @@ class Login extends CI_Controller {
                          $this->email->from($ccid.'@cisco.com');
                          $this->email->to($ccid.'@cisco.com');
                          $this->email->bcc('venvemur@cisco.com'); 
-                         $this->email->subject('ATS Performance Support');
+                         $this->email->subject('EDPS Performance Support');
                          $this->email->message('<html> 
                                                   <body>
                                                        Hi '.$firstname.' '.$lastname.',<br/>
@@ -148,12 +148,12 @@ class Login extends CI_Controller {
                                                        If this is not you. Please Ignore this email.<br/><br/>
                                                        If this is you,
 
-                                                       We will send your id and passoword within 2 bussiness days or less to this email account<br/>
+                                                       We will send your id and password within 2 business days or less to this email account<br/>
                                                        Please acknowledge by accessing your account using the credentials in that email.<br/><br/>
 
                                                        See you soon. <br/><br/>
                                                        Regards,<br/>
-                                                       ATS Performance Support. 
+                                                       EDPS Performance Support. 
                                                        
                                                    </body>
                                                  </html>

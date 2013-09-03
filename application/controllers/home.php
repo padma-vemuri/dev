@@ -449,6 +449,7 @@
                          $query = $query->result();
 
                          $estatusreportinc = '<b style=\"font-family:calibri;\">Issues Reported by  Support Teams  </b>    '.$count.' Records.<br/>';
+                         
                          $estatusreportinc .= "<table style = \"font-family:calibri;font-size:12px;line-height:14px;white-space:nowrap; border:1px solid;\">
                                         <tr style=\"border-collapse:collapse;border:1px solid;padding-left:6px;background-color:lightblue;text-align:left;white-space:nowrap;\">
                                             <th style=\"width:90px;text-align:left;white-space:nowrap;border:1px solid;\">Date</th>
@@ -461,12 +462,13 @@
                                             <th style=\"width:235px;text-align:left;white-space:nowrap;border:1px solid;\">Summary</th>
                                             <th style=\"width:235px;text-align:left;white-space:nowrap;border:1px solid;\">Recommendations</th>
                                         </tr>";
+                         
                          foreach ($query as $row) {
                                    $estatusreportinc .= "<tr style=\"padding:5px;font-family:calibri;font-size:12px;line-height:14px; border:1px;\">
                                                     <td style=\"border:1px solid;\">". $row->ReportedDate ."</td>
                                                     <td style=\"width:160px;border:1px solid;\" >". $row->IssueNumber."</td>
                                                     <td style=\"border:1px solid;\" >". $row->GBP."</td>
-                                                    <td style=\"width:180px;border:1px solid;white-space:pre-line; word-break:keep-all;\" >". $row->Project ."</td>
+                                                    <td style=\"width:180px;border:1px solid;white-space:pre-line; word-break:keep-all;\" >". $row->Project."</td>
                                                     <td style=\"word-break:break-all;border:1px solid;word-break:keep-all;\" >". $row->Application ."</td>
                                                     <td style=\"border:1px solid;\">". $row->Status."</td>
                                                     <td style=\"border:1px solid;text-align:center;\">". $row->ReleaseRelated ."</td>  
@@ -505,13 +507,10 @@
                                                     <td style=\"width:235px;border:1px solid;white-space:pre-line; \">".  $row->Recommendations."</td> 
                                                   </tr>";                           
                          }
-                         $estatusreportpbi .= "</table>";      
-
-
-
-
-
+                              $estatusreportpbi .= "</table>";      
                     }
+
+
                     if($this->input->post('closed')){
 
                          $query = $this->user_model->closedforEmail();
@@ -571,7 +570,7 @@
           			$this->email->set_newline("\r\n");
           			$this->email->from($username.'@cisco.com', '');
           			$this->email->to($username.'@cisco.com', ''); 
-          			$this->email->subject('ATS Performance Normalization Report');
+          			$this->email->subject('EDPS Performance Normalization Report');
                          //$body = array('$perfapp','$statusreport','$closed');
                           if(!$this->input->post('casesummary')){
                               $casesummary = '';
@@ -606,7 +605,7 @@
 				redirect('home/emails');
                }
 			else
-				echo $this->email->print_debugger();
+                    echo " There was an error";
           }
           }
           function emails(){
@@ -782,7 +781,7 @@
                          $this->email->set_newline("\r\n");
                          $this->email->from($this->session->userdata['username'].'@cisco.com', '');
                          $this->email->to('venvemur@cisco.com'); 
-                         $this->email->subject('ATS Performance Support');
+                         $this->email->subject('EDPS Performance Support');
                          //$body = array('$perfapp','$statusreport','$closed');
 
                          $this->email->message('<html> 

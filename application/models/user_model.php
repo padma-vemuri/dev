@@ -688,7 +688,7 @@ class User_model extends CI_Model{
 										ISSUE_REPORTED_DATE as \"ReportedDate\",
 										CASE_NO  as \"IssueNumber\",
 										GBP as \"GBP\",
-										PROJECT as \"Project \",
+										PROJECT as \"Project\",
 										APPLICATION as \"Application\",
 										STATUS  as \"Status\",
 										RELEASE_RELATED as \"ReleaseRelated\",

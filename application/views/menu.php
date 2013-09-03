@@ -54,6 +54,6 @@
 </div>
 
 <div class="logout">
-	<input type='button' id="button" value="Logout" onClick="javascript:location.href = 'home/logout';" /><br/>
+	<input type='button' id="button" value="Logout" onClick="javascript:window.location.href = '/dev/index.php/home/logout';" /><br/>
 	<a class= "menu" 	href= "<?php echo base_url();?>/index.php/home/support">Report a bug? </a>
 </div>
