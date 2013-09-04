@@ -14,7 +14,7 @@
 		echo form_open('home/emailsupport',$formHTML);
 
         
-		echo "<h1> Report a Problem </h1><br/>";
+		echo "<h3> Report a Bug or Suggestion </h3><br/>";
 		
 		echo form_label('Username', 'username',$att);
 		$inputUsername = array(
@@ -22,9 +22,10 @@
 				'id'   =>'userid',
 				'class' =>'signin',
 				'Required' =>'Required',
-				'placeholder'=>'ccid',
+				'placeholder'=> $this->session->userdata['username'],
 				'maxlength' => '18',
-				'size' => '24'
+				'size' => '24',
+				'disabled' =>'disabled'
 				);
 		$inputSubmit = array(
 						'type' =>'submit',
@@ -34,7 +35,7 @@
 		echo form_input($inputUsername);
 		echo "<br/><br/><div id=\"loginjs\" style =\"top:175px;right:30px; position:absolute;\" class =\"jqoutput\"></div>";
 
-		echo form_label('Issue', 'issue',$att);
+		echo form_label('Description', 'issue',$att);
 		$inputProblem = array(
 				'name' =>'problem',
 				'id'   =>'problem',

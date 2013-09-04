@@ -56,6 +56,7 @@ h1{font:  30px/42px 'OpenSansLight', Arial, sans-serif;letter-spacing: 1;}
 h1.logo{font:  13px/12px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1px;color: transparent;
          text-shadow: 0px 9px 2px rgba(255,255,255,1.3);}
 h2{font: 26px/38px 'OpenSansSemibold', Arial, sans-serif;letter-spacing: 0;}
+h3{font:  25px/32px 'OpenSansLight', Arial, sans-serif;letter-spacing: 1;}
 div.body {font:  18px/22px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0; position: absolute; top:90px;overflow: auto; }
 a{text-decoration: none; color:yellow; float:right; }
 fieldset {position:absolute;left:500px; top : 150px;border-radius: 10px;  font:  12px/16px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0;
@@ -160,8 +161,8 @@ table.countIssuesindex{
 
 }
 
-th#theader{background-color:rgba(65,105,255,.27); color:black; padding: 2px 2px 2px 2px;font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1;}
-th#theaderH{background-color:rgba(65,105,255,.27); color:black;border-right: 1px solid white; border-bottom: 1px solid white; padding: 2px 2px 2px 2px;font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1;}
+th#theader{background-color:rgba(192,192,192,.27); color:black; padding: 2px 2px 2px 2px;font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1;}
+th#theaderH{background-color:rgba(192,192,192,.27); color:black;border-right: 1px solid white; border-bottom: 1px solid white; padding: 2px 2px 2px 2px;font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1;}
 th#theader2Y{background-color:rgba(0,100,0,.77); color:white;padding: 2px 2px 2px 2px; border-bottom: 1px solid; font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1;}
 th#theader2N{background-color:rgba(255,0,0,.67); color:white;padding: 2px 2px 2px 2px; border-bottom: 1px solid; font:  12px/14px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 1;}
 
