@@ -114,6 +114,14 @@
 						'maxlength' =>22,
 						'value'=> $case_no
 						);
+		$otherProjects = array(
+						'name' => 	'otherprojects',
+						'id'   =>  	'otherprojects',
+						'class'=>	'otherprojects',
+						'size' =>	41,
+						'maxlength' =>100,
+						'hidden' => 'hidden'
+						);
 		$application = array(
 						'name' => 	'application',
 						'id'   =>  	'application',
@@ -131,6 +139,7 @@
 						'required' =>'required',
 						'value'=> $db
 						);
+
 		
 		echo form_open('home/addform',$formHTML);
 
@@ -181,6 +190,7 @@
 
 		echo form_label('Project Name','project');
 		echo form_dropdown('prolist',$prolist,$project,'id ="prolist" style ="width: 160px;');
+		echo form_input($otherProjects);
 		echo "<br/><br/>";
 
 		

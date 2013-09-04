@@ -349,15 +349,34 @@
 
                
                $this->load->model('user_model');
-               $add = $this->user_model->add();
-               if($add){
-                     $this->session->set_userdata('sucesslog','<p class="sucesslog">'.$add.'</p>');
-                     redirect($this->session->userdata('previousPage'));
-                }
-               else{
-                    $this->session->set_userdata('errorlog','<p class="errorlog">Case Id was already used. or Unable to Create.</p>'.$mes);
-                    redirect('home/create');
+               if($this->input->post('prolist') == 'OTHERS'){
+                    $newProject  = $this->user_model->newProject();
+                    if($newProject){
+                         $add = $this->user_model->add();
+                         if($add){
+                              $this->session->set_userdata('sucesslog','<p class="sucesslog">'.$add.'</p>');
+                              redirect($this->session->userdata('previousPage'));
+                         }else{
+                              $this->session->set_userdata('errorlog','<p class="errorlog">Case Id was already used. or Unable to Create.</p>'.$mes);
+                              redirect('home/create');
+                         }
+                    }
+                    else{
+                         $this->session->set_userdata('errorlog','<p class="errorlog">Project Name was already used. or Unable to Create.</p>'.$mes);
+                         redirect('home/create');
+                    }
+
                }
+               else{
+                    $add = $this->user_model->add();
+                         if($add){
+                              $this->session->set_userdata('sucesslog','<p class="sucesslog">'.$add.'</p>');
+                              redirect($this->session->userdata('previousPage'));
+                         }else{
+                              $this->session->set_userdata('errorlog','<p class="errorlog">Case Id was already used. or Unable to Create.</p>'.$mes);
+                              redirect('home/create');
+                         }
+                    }
           }
 		function charts(){
                if(!isset($this->session->userdata['username']))

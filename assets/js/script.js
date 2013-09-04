@@ -47,5 +47,19 @@ $(function() {
 	$( "#reporteddate" ).datepicker("option", "showAnim", "slideDown");
 	
 });
+$(document).ready(function(){
+	$('#prolist').click(function(){
+		console.log('click observered');
+		if($('#prolist').val() == 'OTHERS'){
+			console.log('inside otherd');
+			$('#otherprojects').show();
+		}
+		else
+			$('#otherprojects').hide();
+	})
+})
+
+	console.log($('#prolist :selected').val());
+
 
 

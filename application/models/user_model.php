@@ -464,7 +464,9 @@ class User_model extends CI_Model{
 
 	function projectlist1(){
 		$query =$this->db->query("SELECT  
-									GBP as \"GBP\",PROJECT as \"Project\" from gdcp.RELEASE_PROJECTS order by PROJECT");
+									GBP as \"GBP\",PROJECT as \"Project\" from gdcp.RELEASE_PROJECTS where gbp <>'notReleaseRelated' 
+									union 
+									select 'OTHERS' as \"GBP\", 'OTHERS' as \"Project\" from dual");
 		if($query){
 			return $query->result_array();
 		}else{
@@ -558,7 +560,15 @@ class User_model extends CI_Model{
 		else
 			return false;
 	}
-	
+	function newProject(){
+		$noQuoteOtherProjects = str_replace("'","''",$this->input->post('otherprojects'));
+		$query = $this->db->query("insert into gdcp.release_projects values('NOTRELEASERELATED','".$noQuoteOtherProjects."',(select max(project_id)+1 from gdcp.release_projects))");
+		if($query)
+			return true;
+		else
+			return false;
+
+	}
 	function add(){
 
 		$noQuoteRecc = str_replace("'","''",$this->input->post('recommendations'));
@@ -584,8 +594,20 @@ class User_model extends CI_Model{
 			else
 				$date1 = '';
 
+			if($this->input->post('prolist') == 'OTHERS'){
+				$noQuoteOtherProject = str_replace("'","''",$this->input->post('otherprojects'));
+				$projectName = $noQuoteOtherProject;
+				$releaseRelated =  $this->input->post('relrelated');	
+			}
+			elseif($this->input->post('prolist') !== 'OTHERS'){
+				$projectName = $this->input->post('prolist');
+				$releaseRelated = $this->input->post('relrelated');	
+			}
+
+
 			$checkCaseNumber = $this->db->query('select * from gdcp.release_status_report where  case_no =\''.$incnumber.'\'');
 			$checkCaseNumber = $checkCaseNumber->num_rows();
+			
 			if($checkCaseNumber > 1 && $this->input->post('caseid') == ''){
 				$message = 'Case ID/Issue has already used ';
 				return $message;
@@ -595,7 +617,7 @@ class User_model extends CI_Model{
 					                                '".$date1."',
 					                                '".strtoupper($no_spaces_case_num)."',
 					                                '".$this->input->post('gbplist')."',
-					                                '".$this->input->post('prolist')."',
+					                                '".$projectName."',
 					                               	'".$noQuoteApp."',
 													'".$noQuotePri."',
 													'".$this->input->post('dbfe')."',
@@ -603,7 +625,7 @@ class User_model extends CI_Model{
 					                                '".$this->input->post('supdb')."',
 													'".$this->input->post('anallist')."',
 													'".$this->input->post('status')."',
-													'".$this->input->post('relrelated')."',
+													'".$releaseRelated."',
 													'".$noQuoteRecc."',
 													'".$noQuoteSumm."',
 													'',

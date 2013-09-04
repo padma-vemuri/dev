@@ -9,12 +9,11 @@
 		<link rel="stylesheet" href="<?php echo base_url();?>assets/css/main.css">
 		 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 		
-		<script  src ="<?php echo base_url();?>assets/js/jquery-1.10.1.min.js"></script>
+		<!--<script  src ="<?php echo base_url();?>assets/js/jquery-1.10.1.min.js"></script>-->
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script  src ="<?php echo base_url();?>assets/js/script.js"></script>
 		 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-		 <script src="http://yui.yahooapis.com/3.11.0/build/yui/yui-min.js"></script>
-		
-</script><!-- link to style sheet -->
+		 <script src="http://yui.yahooapis.com/3.11.0/build/yui/yui-min.js"></script><!-- link to style sheet -->
 		<script src='<?php echo base_url();?>assets/js/script.js'></script>  <!-- link to JS functions -->
 		<!--  link to font style sheets -->
 
