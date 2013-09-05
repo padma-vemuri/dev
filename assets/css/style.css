@@ -9,9 +9,16 @@ body{ background-color: white; line-height: 1em;  }
 #fromdiv{position: relative;}
 
 #form{ -webkit-border-radius: 5px; -moz-border-radius: 5px;width: auto; 
-      border-radius: 5px;font: 15px/30px 'OpenSansLight', Arial, sans-serif;line-height: 1.3em;
-      padding : 30px 40px 40px 30px;background-color:rgba(65,105,225,.56);
-      color: whitesmoke; clear:both; float: right; position: absolute; top:90px; }
+      border-radius: 5px;
+      font: 15px/30px 'OpenSansLight', Arial, sans-serif;line-height: 1.3em;
+      padding : 30px 40px 40px 30px;
+      background-color:rgba(65,105,225,.56);
+      color: whitesmoke; clear:both; 
+      float: right; 
+      position: absolute; 
+      top:90px; 
+   }
+
 #emailform{ -webkit-border-radius: 5px; -moz-border-radius: 5px;width: auto; 
       border-radius: 5px;font: 15px/30px 'OpenSansLight', Arial, sans-serif;line-height: 1.3em;
       padding : 30px 40px 40px 30px;width:350px;background-color:rgba(65,105,225,.56);
@@ -179,5 +186,7 @@ div.left{display: inline-block;float: left;}
 div.right{display: inline-block;float: left;}
 .otherprojects{margin-left: 30px;}
 
-
+img {
+   border-style: none;
+}
 

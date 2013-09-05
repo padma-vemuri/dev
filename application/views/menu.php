@@ -9,7 +9,7 @@
 <div name ="menu" id ="menu">
 	<ul class ="menuicon" style="display: inline-block;">
 		<a class="menu" href="<?php echo base_url();?>index.php/home"/>
-		<li> <img src="<?php echo base_url();?>assets/images/home.png" /></li>
+		<li> <img src="<?php echo base_url();?>assets/images/home.png"  /></li>
 		<li>Home</li>
 		</a>
 	</ul>

@@ -6,16 +6,18 @@
 	     function index(){
                if(!isset($this->session->userdata['username']))
                     redirect('login');
+               $this->load->view('header');
+               $this->load->view('menu');
+               $this->load->view('search');
                $this->session->set_userdata('previousPage',CurrentPage::curPageURL());
+               
+			
                echo $this->session->userdata('sucesslog');
                echo $this->session->userdata('errorlog');
                $this->session->unset_userdata('sucesslog');
                $this->session->unset_userdata('errorlog');
                $this->load->model('user_model');
-               
-               $this->load->view('header');
-			$this->load->view('menu');
-               $this->load->view('search');
+              
                $data['countOpenPBIY']= $this->user_model->countPBI('Y','Open');
                $data['countOpenINCY']= $this->user_model->countINC('Y','Open');
                $data['countOpenPBIN']= $this->user_model->countPBI('N','Open');
@@ -93,6 +95,7 @@
 
                     'table_close'         => '</table></div>'
                );
+               echo "<html><head><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/></head>";
                echo"<div id ='leftpane'>";
 			$this->table->set_template($tmpl);
                $this->table->set_empty("0");
@@ -240,6 +243,7 @@
                $this->load->view('search');
                $this->load->library('table');
 			//$this->load->view('email');
+                echo "<html><head><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/></head>";
                echo $this->session->userdata('sucesslog');
                $this->session->unset_userdata('sucesslog');
 			$this->load->model('user_model');  
@@ -325,6 +329,7 @@
                );
                $this->table->set_caption('<h2 class="tableheading">Release Projects</h2><p class = "count">'.$query->num_rows().' Records</p>');
 			$this->table->set_template($tmpl);
+               echo "<html><head><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/></head>";
 			echo $this->table->generate($query);
               	
 		}
