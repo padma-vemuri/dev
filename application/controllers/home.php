@@ -96,7 +96,7 @@
                echo"<div id ='leftpane'>";
 			$this->table->set_template($tmpl);
                $this->table->set_empty("0");
-               $this->table->set_caption('<p id="indextableheading">Q2FY14 -Issues Summary</p>');
+               $this->table->set_caption('<p id="indextableheading">Q1FY14 -Issues Summary</p>');
                if($query->num_rows() > 0)
 			  echo $this->table->generate($query);
                else
@@ -108,7 +108,7 @@
                     echo "<div style=\"width:auto;\" id = \"open24title\"></div>";
                     $this->table->set_template($tmp2);
                     $this->table->set_empty("Not Defined");
-                    $this->table->set_caption('<p id="indextableheading">Q2FY14 -Issues opened in last 24 hours</p>');
+                    $this->table->set_caption('<p id="indextableheading">Q1FY14 -Issues opened in last 24 hours</p>');
                     echo $this->table->generate($query);
                }
                else{
@@ -125,7 +125,7 @@
                     $query = $this->user_model->cases24();
 	         		$this->table->set_template($tmp3);
                     $this->table->set_empty("Not Defined");
-                    $this->table->set_caption('<p id="indextableheading">Q2FY14 -Issues worked on in last 24 Hours</p>');
+                    $this->table->set_caption('<p id="indextableheading">Q1FY14 -Issues worked on in last 24 Hours</p>');
                     //echo $this->curPageURL();
                     echo $this->table->generate($query);
                }
