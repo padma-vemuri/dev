@@ -8,6 +8,22 @@ function goback(){
 
 
 $(function(){
+	$('#casenumber').bind('input propertychange', function(){
+		var PBI = 'PBI';
+		if($(this).val().match(PBI)!== null){
+			if($('#recommendations').attr('required') == 'required'){
+				$('recommendations').removeAttr('required');
+			}
+
+			
+			//console.log($('#recommendations').prop('required'));
+		}
+	})
+
+});
+
+
+$(function(){
 	$('#userid').bind('input propertychange',function(){
 		if($(this).val().length > 13)
 			$('#loginjs').html('Your userid can not be more than 13 characters');
@@ -43,8 +59,10 @@ $(function(){
 
 
 $(function() {
+	if($('#reporteddate').val() ==''){
 	$( "#reporteddate" ).datepicker({ minDate: -365, maxDate: 0});
 	$( "#reporteddate" ).datepicker("option", "showAnim", "slideDown");
+}
 	
 });
 $(document).ready(function(){
@@ -59,7 +77,6 @@ $(document).ready(function(){
 	})
 })
 	console.log($('#casenumber').val());
-	console.log($('#prolist :selected').val());
-
+	
 
 

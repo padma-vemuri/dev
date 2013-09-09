@@ -57,9 +57,10 @@
 						'name' =>'reporteddate1',
 						'id'   =>'reporteddate',
 						'type' =>'text',
+						'placeholder' => $repdate,
 						'size' => 21,
 						'value'=>$repdate,
-						'disabled'=>'disabled'
+						'readOnly' =>'readOnly'
 	
 							);
 		

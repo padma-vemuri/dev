@@ -586,7 +586,7 @@ class User_model extends CI_Model{
     		 $pattern = '/PAGED/';
     		 $replacement = '';
   			 $incnumber = preg_replace($pattern,$replacement ,$search); 
-
+  		
 		if($this->input->post('submit')){
 			$s = 	$this->input->post('reporteddate');
 			if($s){
@@ -609,12 +609,22 @@ class User_model extends CI_Model{
 
 			$checkCaseNumber = $this->db->query('select * from gdcp.release_status_report where  case_no =\''.$incnumber.'\'');
 			$checkCaseNumber = $checkCaseNumber->num_rows();
-			
+
+			$checkDate = $this->db->query('select * from gdcp.release_status_report where  id =\''.$this->input->post('caseid').'\'');
+			$checkDate = $checkDate->num_rows();
+
 			if($checkCaseNumber > 1 && $this->input->post('caseid') == ''){
 				$message = 'Case ID/Issue has already used ';
 				return $message;
 			}
 			elseif($checkCaseNumber > 0 && $this->input->post('caseid') != '' || $checkCaseNumber == 0    ){
+					if($checkDate == 0 ){
+						if($this->input->post('reporteddate') == ''){
+                         $this->session->set_userdata('errorlog','<p class="errorlog">***Date Field Cannot be blank </p>');
+                         redirect('home/create');
+                    }
+                }
+
 					$addform  = $this->db->query("call gdcp.perf_norm_pkg.ins_upd_report('".$this->input->post('caseid')."',
 					                                '".$date1."',
 					                                '".strtoupper($no_spaces_case_num)."',

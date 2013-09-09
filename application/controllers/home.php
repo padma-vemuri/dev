@@ -341,12 +341,7 @@
                     redirect('home/create');
                }
                 
-               if(!$this->input->post('delete')){
-                    if($this->input->post('reporteddate') == ''){
-                         $this->session->set_userdata('errorlog','<p class="errorlog">***Date Field Cannot be blank </p>');
-                         redirect('home/create');
-                    }
-               } 
+               
                $path_parts = pathinfo($this->input->post('url'));
 
                $regularExpression = '/[^a-zA-Z\d\(\):]/';
