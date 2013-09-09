@@ -337,14 +337,18 @@
                if(!isset($this->session->userdata['username']))
                     redirect('login');
                if($this->input->post('casenumber') == ''){
-                    $this->session->set_userdata('error','<p class="errorlog">***Case Number Cannot be blank </p>');
+                    $this->session->set_userdata('errorlog','<p class="errorlog">***Case Number Cannot be blank </p>');
                     redirect('home/create');
                }
+                if($this->input->post('reporteddate') == ''){
+                    $this->session->set_userdata('errorlog','<p class="errorlog">***Date Field Cannot be blank </p>');
+                    redirect('home/create');
+                }
                $path_parts = pathinfo($this->input->post('url'));
 
                $regularExpression = '/[^a-zA-Z\d\(\):]/';
                if(preg_match($regularExpression,$this->input->post('casenumber') )){
-                    $this->session->set_userdata('error','<p class="errorlog">***Case Number Cannot have alpha numeric characters. </p>');
+                    $this->session->set_userdata('errorlog','<p class="errorlog">***Case Number Cannot have alpha numeric characters. </p>');
                     redirect('home/create/'.$path_parts['filename']);
                }
           
@@ -496,8 +500,8 @@
                                                     <td style=\"word-break:break-all;border:1px solid;word-break:keep-all;\" >". $row->Application ."</td>
                                                     <td style=\"border:1px solid;\">". $row->Status."</td>
                                                     <td style=\"border:1px solid;text-align:center;\">". $row->ReleaseRelated ."</td>  
-                                                    <td style=\"width:235px;border:1px solid;white-space:pre-line; word-break:keep-all; \">".$row->Recommendations."</td> 
                                                     <td style=\"width:235px;border:1px solid;white-space:pre-line; word-break:keep-all; \">".$row->Summary."</td> 
+                                                    <td style=\"width:235px;border:1px solid;white-space:pre-line; word-break:keep-all; \">".$row->Recommendations."</td> 
                                                   </tr>";                           
                          }
                          $estatusreportinc .= "</table>";      

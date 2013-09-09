@@ -58,7 +58,7 @@ $(document).ready(function(){
 			$('#otherprojects').hide();
 	})
 })
-
+	console.log($('#casenumber').val());
 	console.log($('#prolist :selected').val());
 
 
