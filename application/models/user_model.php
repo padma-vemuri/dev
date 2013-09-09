@@ -484,7 +484,9 @@ class User_model extends CI_Model{
 	}
 
 	function analystlist(){
-		$analyst = $this->db->query("select distinct assigned_to as assigned from gdcp.perf_assignments  order by assigned_to");
+		$analyst = $this->db->query("select distinct assigned_to as assigned from gdcp.perf_assignments 
+									union
+									select 'ITDS Support Team' as assigned from dual ");
 		if($analyst)
 			return $analyst->result_array();
 		else
