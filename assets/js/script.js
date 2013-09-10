@@ -10,13 +10,19 @@ function goback(){
 $(function(){
 	$('#casenumber').bind('input propertychange', function(){
 		var PBI = 'PBI';
-		if($(this).val().match(PBI)!== null){
+		var pbi = 'pbi'
+		var INC = 'INC';
+		if($(this).val().match(PBI)!== null || $(this).val().match(pbi)!== null ){
 			if($('#recommendations').attr('required') == 'required'){
-				$('recommendations').removeAttr('required');
+			  console.log('heyyyyyyyyyyyyy this is it.');
+			  $('#recommendations').removeAttr('required');
 			}
-
-			
-			//console.log($('#recommendations').prop('required'));
+		}else if($(this).val().match(INC)!== null){
+			console.log('gett');
+			if($('#recommendations').attr('required') !== 'required'){
+			   $('#recommendations').attr('required');
+				console.log($('#recommendations').attr('required'));
+			} 
 		}
 	})
 

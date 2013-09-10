@@ -206,8 +206,8 @@ class User_model extends CI_Model{
 							RELEASE_RELATED as \"ReleaseRelated\",
 							'<div style=\"width:235px; word-break:hyphenate;white-space:pre-line;\">'||SUMMARY||'</div>'  as \"Summary\",
 							'<div style=\"width:235px;white-space:pre-line; word-break:hyphenate;\">'||RECOMMENDATIONS||'</div>' as \"Recommendations\",CASE_PBI as \"CasePBI\"
-							from gdcp.RELEASE_STATUS_REPORT_V
-							order by CASE_PBI asc, release_related desc, decode(status,'Open',1),issue_reported_date desc,project 
+							from gdcp.RELEASE_STATUS_REPORT_V where status not in ('Resolved','Closed')
+							order by CASE_PBI asc, release_related desc, decode(status,'Open',1,'WIP',2,'Recommendations Provided',3),issue_reported_date desc,project 
 							");
 		if($query){
 			return $query->result();
