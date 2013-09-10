@@ -193,7 +193,7 @@ class User_model extends CI_Model{
 
 							'<div style=\"width:60px;\">'||ISSUE_REPORTED_DATE||'</div>' as \"IssueReportedDate\",
 							CASE_NO as \"CaseNo\",
-							'<div   style=\"width:60px;\">'||gbp||'</div>' as \"GBP\",
+							'<div   style=\"width:100px;\">'||gbp||'</div>' as \"GBP\",
 							
 							'<div style=\"width:200px;white-space:pre-line; word-break:keep-all;\">'||project||'</div>' as \"Project\",
 							'<div style=\"width:180px; word-break:hyphenate;\">'||APPLICATION||'</div>' as  \"Application\",
@@ -464,7 +464,7 @@ class User_model extends CI_Model{
 
 	function projectlist1(){
 		$query =$this->db->query("SELECT  
-									GBP as \"GBP\",PROJECT as \"Project\" from gdcp.RELEASE_PROJECTS where gbp <>'notReleaseRelated' 
+									GBP as \"GBP\",PROJECT as \"Project\" from gdcp.RELEASE_PROJECTS where gbp <>'NOTRELEASERELATED' 
 									union 
 									select 'OTHERS' as \"GBP\", 'OTHERS' as \"Project\" from dual");
 		if($query){
@@ -564,11 +564,17 @@ class User_model extends CI_Model{
 	}
 	function newProject(){
 		$noQuoteOtherProjects = str_replace("'","''",$this->input->post('otherprojects'));
-		$query = $this->db->query("insert into gdcp.release_projects values('NOTRELEASERELATED','".$noQuoteOtherProjects."',(select max(project_id)+1 from gdcp.release_projects))");
-		if($query)
-			return true;
+		$queryCheckProject = $this->db->query("select project from gdcp.release_projects where project ='".$noQuoteOtherProjects."'");
+		$queryCheckProject = $queryCheckProject->num_rows();
+		if($queryCheckProject == 0){
+			$query = $this->db->query("insert into gdcp.release_projects values('NOTRELEASERELATED','".$noQuoteOtherProjects."',(select max(project_id)+1 from gdcp.release_projects))");
+			if($query)
+				return true;
+			else
+				return false; 
+		}
 		else
-			return false;
+			return true;
 
 	}
 	function add(){
