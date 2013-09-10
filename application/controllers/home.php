@@ -76,7 +76,7 @@
                     'table_close'         => '</table></div>'
                );
 			$tmp3 = array (
-                    'table_open'          => '<div id="cases24"><table  class="curvedEdges" style = "z-index:3;table-layout:fixed; position:relative;left:100px;">',
+                    'table_open'          => '<div id="cases24"><table  class="curvedEdges" style = "z-index:3;table-layout:fixed; position:relative;left:115px;">',
 
                     'heading_row_start'   => '<tr>',
                     'heading_row_end'     => '</tr>',
