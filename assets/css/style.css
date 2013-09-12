@@ -190,3 +190,4 @@ img {
    border-style: none;
 }
 
+input[type="file"] {background-color:rgba(255,200,190,.27); color:grey;}

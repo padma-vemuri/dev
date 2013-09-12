@@ -804,15 +804,29 @@
                $username =  $this->input->post('username');
                $problemo =  $this->input->post('problem');
 
+               //Getting the image and deleting it after sending the email
+/*
+               $name = preg_replace("/[^A-Z0-9._-]/i", "_",$this->input->files['screenshot']["name"]);
+               $success = move_uploaded_file($this->input->files['screenshot']['tmp_name'],'/uploads/' .$name);
+               if (!$success) { 
+                    echo "<p>Unable to save file.</p>";
+                    exit;
+               }
+               else{
+                    $file = 'uploads/'.$name;
+               }*/
+
                          $this->email->set_newline("\r\n");
                          $this->email->from($this->session->userdata['username'].'@cisco.com', '');
                          $this->email->to('venvemur@cisco.com'); 
                          $this->email->subject('EDPS Performance Support');
+                        // $this->email->attach('/uploads/'.$name);
                          //$body = array('$perfapp','$statusreport','$closed');
 
                          $this->email->message('<html> 
                                                   <body>
                                                        Hi,<br/><br/>
+
                                                        '.$this->session->userdata['username'].' says your application is buggy. <br/>
                                                        Or <br/>
                                                        He might need help using your application.<br/>

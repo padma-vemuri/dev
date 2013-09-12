@@ -46,9 +46,18 @@
 				'maxlength' => 3000,
 				'cols' => 40,
 				);
+		$inputScreenShot = array(
+				'name' => 'screenshot',
+				'id'   => 'Email',
+				 'placeholder'  =>'screenshot goes here....',
+				 'type' =>'file'
+				 );
+
 		echo form_textarea($inputProblem);
 		echo "<br/><br/><div id=\"passwordjs\" style =\"top:245px;right:30px; position:absolute;\" class =\"jqoutput\"></div>";
-
+		echo form_label('Image','image',$att);
+		echo form_input($inputScreenShot);
+		
 		echo form_submit($inputSubmit);
 		 
 		

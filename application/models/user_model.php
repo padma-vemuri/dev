@@ -694,26 +694,29 @@ class User_model extends CI_Model{
 			$idid = $row['ID'];
 		}
 
-		 $query = $this->db->query("select ISSUE_REPORTED_DATE as \"Reported Date\",
-										  CASE_NO as \"Issue Number\",
-										  '<div style=\"width:160px; word-break:break-all; white-space:pre-line;\">'||APPLICATION||'</div>' as \"Application\",
-										  '<div style=\"width:160px; word-break:break-all; white-space:pre-line;\">'||PRIORITY||'</div>' as \"Priority\",
-										  '<div align=\"center\">'||DB_FE||'</div>'   as \"DB/FE\",
+		 $query = $this->db->query("select revision.ISSUE_REPORTED_DATE as \"Reported Date\",
+										  revision.CASE_NO as \"Issue Number\",
+										  '<div style=\"width:160px; word-break:break-all; white-space:pre-line;\">'||revision.GBP||'</div>' as \"GBP\",
+										  '<div style=\"width:200px; word-break:keep-all; white-space:pre-line;\">'||projects.PROJECT||'</div>' as \"Project\",
+										  '<div style=\"width:160px; word-break:break-all; white-space:pre-line;\">'||revision.APPLICATION||'</div>' as \"Application\",
+										  '<div style=\"width:160px; word-break:break-all; white-space:pre-line;\">'||revision.PRIORITY||'</div>' as \"Priority\",
+										  '<div align=\"center\">'||revision.DB_FE||'</div>'   as \"DB/FE\",
 
-										  DB as \"Database\",
-										  '<div align=\"center\">'||SUPPORTED_DB||'</div>'  as \"Supported DB\",
-										  ANALYST as \"Analyst\",
-										  STATUS as \"Status\",
-										   '<div align=\"center\">'||RELEASE_RELATED||'</div>'   as \"ReleaseRelated\",
-										  '<div style=\"width:300px; word-break:break-all; white-space:pre-line;\">'||summary||'</div>' as \"Summary\",
-										  '<div style=\"width:300px; word-break:break-all; white-space:pre-line;\">'||recommendations||'</div>' as \"Recommendations\",
+										  revision.DB as \"Database\",
+										  '<div align=\"center\">'||revision.SUPPORTED_DB||'</div>'  as \"Supported DB\",
+										  revision.ANALYST as \"Analyst\",
+										  revision.STATUS as \"Status\",
+										   '<div align=\"center\">'||revision.RELEASE_RELATED||'</div>'   as \"ReleaseRelated\",
+										  '<div style=\"width:300px; word-break:break-all; white-space:pre-line;\">'||revision.summary||'</div>' as \"Summary\",
+										  '<div style=\"width:300px; word-break:break-all; white-space:pre-line;\">'||revision.recommendations||'</div>' as \"Recommendations\",
 										 	to_char(last_update_date,'mm/dd/yyyy hh:mi:ss AM')  as \"Last Updated Date(PST)\",
-										  CREATED_BY as \"Created By\",
-										  LAST_UPDATED_BY as \"Last Updated By\",
-										  CASE_PBI as \"Case/PBI\",
-										   '<div align=\"center\">'||REVS||'</div>' as \"Revisions.\"
+										  revision.CREATED_BY as \"Created By\",
+										  revision.LAST_UPDATED_BY as \"Last Updated By\",
+										  revision.CASE_PBI as \"Case/PBI\",
+										   '<div align=\"center\">'||revision.REVS||'</div>' as \"Revisions.\"
 
-									from gdcp.RELEASE_STATUS_REPORT_REV where ID like '".$idid."' order by REVS desc"); 
+									from gdcp.RELEASE_STATUS_REPORT_REV revision, gdcp.release_projects projects where 
+												revision.project_id = projects.project_id and ID like '".$idid."' order by REVS desc"); 
 		if($query->num_rows() > 0)
 			return $query;
 		else
