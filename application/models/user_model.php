@@ -38,7 +38,7 @@ class User_model extends CI_Model{
 
 	function casesummary(){
 		$query =$this->db->query("SELECT DISTINCT
-                             '<div style = \"width:330px;white-space:pre-line; word-break:keep-all;\"><a id = \"edit\" href=\"".base_url()."index.php/home/search?search=' || a.project_id||'&list=Project_id\">'||a.project||'</a></div>' as \"Project Name\",
+                             '<div style = \"width:330px;white-space:pre-line; word-break:keep-all;\"><a id = \"edit\" href=\"".base_url()."index.php/home/search?search=' || a.project_id||'&list=Project_id&R=N\">'||a.project||'</a></div>' as \"Project Name\",
                                  (  SELECT '<div>' ||COUNT (1)||'</div>'
                                     FROM gdcp.release_status_report_v b
                                    WHERE     case_pbi = 'C'
@@ -159,7 +159,7 @@ class User_model extends CI_Model{
 										<a id = \"edit\" href=\"".base_url()."index.php/home/search?search='||case_no||'&list=CASE_NO\">'||case_no||'</a></div>' as \"Issue Number\", 
 
 									'<div style=\"word-break:keep-all;width:160px;\">
-										<a id = \"edit\" href=\"".base_url()."index.php/home/search?search='||Project_id||'&list=Project_id\">'||project||'<a/></div>' as\"Project Name\", 
+										<a id = \"edit\" href=\"".base_url()."index.php/home/search?search='||Project_id||'&list=Project_id&R=N\">'||project||'<a/></div>' as\"Project Name\", 
 									'<div style=\"word-break:keep-all;width:160px;\">'||APPLICATION||'</div>' as  \"Application\",
 																						status as \"Status\"
 										from gdcp.release_status_report_v
@@ -176,7 +176,7 @@ class User_model extends CI_Model{
 									'<div style=\"word-break:break-all;width:90px;\">
 										<a  id = \"edit\" href=\"".base_url()."index.php/home/search?search='||case_no||'&list=CASE_NO\">'||case_no||'</a></div>' as \"Issue Number\",
 									'<div style=\"word-break:keep-all;width:160px;\">
-										<a id = \"edit\" href=\"".base_url()."index.php/home/search?search='||Project_id||'&list=Project_id\">'||project||'<a/></div>' as\"Project Name\", 
+										<a id = \"edit\" href=\"".base_url()."index.php/home/search?search='||Project_id||'&list=Project_id &R=N\">'||project||'<a/></div>' as\"Project Name\", 
 									'<div style=\"word-break:keep-all;width:160px;\">'||APPLICATION||'</div>' as  \"Application\",
 									status as \"Status\"
 											from gdcp.release_status_report_v
@@ -503,6 +503,7 @@ class User_model extends CI_Model{
 		
 		$searchString = $this->remove_characters($this->input->get('search'));
 		$list  = $this->input->get('list');
+		$ReleaseArgument = $this->input->get('R');
 		
 		$collumns =  'ID,
 							\'<div   style="width:60px;">\'||ISSUE_REPORTED_DATE||\'</div>\'  as "IssueReportedDate",
@@ -520,8 +521,14 @@ class User_model extends CI_Model{
 							\'<div  style="width:235px;white-space:pre-line; word-break:hyphenate;">\'||SUMMARY||\'</div>\'  as "Summary",
 							\'<div  style="width:235px;white-space:pre-line; word-break:hyphenate;">\'||RECOMMENDATIONS||\'</div>\' as "Recommendations",
 							CASE_PBI as "CasePBI" from  gdcp.RELEASE_STATUS_REPORT_V where';
-			
-		$search = $this->db->query("SELECT ".$collumns." ".$list." like '".$searchString."' order by  CASE_PBI asc, release_related desc, decode(status,'Open',1),issue_reported_date desc,project" );
+		if($ReleaseArgument == 'N'){
+			$releases = ' RELEASE_RELATED  <> \''.$ReleaseArgument.'\'  and ';
+		}
+		elseif ($ReleaseArgument !== 'N'){
+			$releases = '';
+		}		
+		
+		$search = $this->db->query("SELECT ".$collumns." ".$releases." ".$list." like '".$searchString."' order by  CASE_PBI asc, release_related desc, decode(status,'Open',1),issue_reported_date desc,project" );
 		
 		if($search){
 			if ($search->num_rows() < 1){
