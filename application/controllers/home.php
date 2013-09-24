@@ -95,6 +95,7 @@
 
                     'table_close'         => '</table></div>'
                );
+
                echo "<html><head><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/></head>";
                echo"<div id ='leftpane'>";
 			$this->table->set_template($tmpl);
@@ -111,6 +112,7 @@
                     echo "<div style=\"width:auto;\" id = \"open24title\"></div>";
                     $this->table->set_template($tmp2);
                     $this->table->set_empty("Not Defined");
+
                     $this->table->set_caption('<p id="indextableheading">Q1FY14 -Issues opened in last 24 hours</p>');
                     echo $this->table->generate($query);
                }
@@ -119,7 +121,8 @@
                     //$this->table->set_template($tmp2);
                     //$this->table->set_caption('Cases open in the last 24 hours');
                     //echo $this->table->generate($query); 
-                    echo "<h2 class=\"tableinside\"> No Issues were opened in last 24 hours</h2>";
+                    echo "<div style=\"width:300px;\" id  =\"open24titleE\">";
+                    echo "<h2 class=\"tableinside\"> No Issues were opened in last 24 hours</h2>"; echo "</div>";
                }
                echo "</div>";
 

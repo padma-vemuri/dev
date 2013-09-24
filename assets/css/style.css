@@ -89,7 +89,7 @@ div.subscript{position:absolute;top:135px;right:10px;font:  11px/11px 'OpenSansR
 div.js{position:absolute;top: 205px;right:10px;font:  11px/11px 'OpenSansRegular', Arial, sans-serif;letter-spacing: 0; color:red;}
 div#casesummarytitle{position:absolute; top:145px;}
 div#open24title{position:absolute; top:395px;}
-div#open24titleE{position:absolute; top:510px;border:solid 4px; padding: 15px 15px 15px 15px; border-color: royalblue;-webkit-border-radius:9px;-moz-border-radius:9px;-ms-border-radius:9px;-o-border-radius:9px;border-radius:9px;}
+div#open24titleE{position:absolute; top:380px;left: 50px;border:solid 4px; padding: 15px 15px 15px 15px; border-color: royalblue;-webkit-border-radius:9px;-moz-border-radius:9px;-ms-border-radius:9px;-o-border-radius:9px;border-radius:9px;}
 div#cases24title{position:absolute; top:145px; left: 520px;}
 div#cases24titleE{position:absolute; top:195px; left: 700px; border:solid 4px; padding: 15px 15px 15px 15px; border-color: royalblue;-webkit-border-radius:9px;-moz-border-radius:9px;-ms-border-radius:9px;-o-border-radius:9px;border-radius:9px;}
 
